@@ -1134,12 +1134,12 @@ CheatStart_Text_Already:
 CheckWildEncounter::
 	checkflag FLAG_NOWILDBATTLE
 	vgoto_if 1, CheckWildEncounter_ActivatedFlag
-	setflag FLAG_NOWILDBATTLE
+	clearflag FLAG_NOWILDBATTLE
 	msgbox CheckWild_Text_FlagDeactivated, MSGBOX_NPC
 	end
 
 CheckWildEncounter_ActivatedFlag::
-	clearflag FLAG_NOWILDBATTLE
+	setflag FLAG_NOWILDBATTLE
 	msgbox CheckWild_Text_FlagActivated, MSGBOX_NPC
 	end
 
@@ -1162,10 +1162,10 @@ CheckTrainerSee_ActivatedFlag::
 	end
 
 CheckTrainerSee_Text_FlagActivated: 
-	.string "Trainer Sees You activated.$"
+	.string "No Trainer Battles activated.$"
 	
 CheckTrainerSee_Text_FlagDeactivated: 
-	.string "Trainer Sees You deactivated.$"
+	.string "No Trainer Battles deactivated.$"
 
 
 Bike_EventScript_SwitchBikes::
@@ -1197,3 +1197,21 @@ Bike_Text_SwapMachForAcro:
 
 Bike_Text_SwapAcroForMach:
 	.string "Swapped to MACH BIKE.$"
+
+ForceMirageIsland::
+	checkflag FLAG_FORCE_MIRAGE_ISLAND
+	vgoto_if 1, ForceMirageIsland_ActivatedFlag
+	setflag FLAG_FORCE_MIRAGE_ISLAND
+	msgbox ForceMirageIsland_Text_FlagActivated, MSGBOX_NPC
+	end
+
+ForceMirageIsland_ActivatedFlag::
+	clearflag FLAG_FORCE_MIRAGE_ISLAND
+	msgbox ForceMirageIsland_Text_FlagDeactivated, MSGBOX_NPC
+	end
+
+ForceMirageIsland_Text_FlagActivated: 
+	.string "Mirage Island activated.$"
+	
+ForceMirageIsland_Text_FlagDeactivated: 
+	.string "Mirage Island deactivated.$"
