@@ -195,6 +195,9 @@ bool8 CheckForTrainersWantingBattle(void)
     gNoOfApproachingTrainers = 0;
     gApproachingTrainerId = 0;
 
+    if (FlagGet(FLAG_SYS_TOGGLE_TRAINER_BATTLES))
+        return FALSE;
+
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
         u8 numTrainers;

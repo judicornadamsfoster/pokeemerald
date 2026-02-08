@@ -163,6 +163,8 @@ LittlerootTown_EventScript_GoInsideWithMom::
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
 	return
 
+
+
 LittlerootTown_Movement_MomExitHouse:
 	walk_down
 	step_end
@@ -1014,3 +1016,184 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
 
+// cheatstart
+CheatStart::
+	lockall
+	//
+	faceplayer
+	checkflag FLAG_LANDMARK_POKEMON_LEAGUE
+	vgoto_if 1, CheatStart_EventScript_Already
+	//
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_RESCUED_BIRCH
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+	setflag FLAG_ADVENTURE_STARTED
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+	setvar VAR_BIRCH_LAB_STATE, 2
+	setvar VAR_ROUTE101_STATE, 3
+	setflag FLAG_SYS_POKEDEX_GET
+	special SetUnlockedPokedexFlags
+	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
+	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
+	setflag FLAG_SYS_NATIONAL_DEX
+	special EnableNationalPokedex
+	setflag FLAG_RECEIVED_RUNNING_SHOES
+	setflag FLAG_SYS_B_DASH
+	setvar VAR_LITTLEROOT_TOWN_STATE, 4 @ 4: Received Running Shoes
+	setvar VAR_LITTLEROOT_INTRO_STATE, 7 @ 7: Told to go meet rival
+	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2 @ 2: Met Rival's Mom and is corresponding gender
+	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2 @ 2: Met Rival's Mom and is corresponding gender
+	setvar VAR_LITTLEROOT_RIVAL_STATE, 4 @ 4: Received Pokedex
+	setflag FLAG_RECEIVED_BIKE
+	additem ITEM_ACRO_BIKE
+	setvar VAR_BRINEY_HOUSE_STATE, 1
+	setvar VAR_ROUTE116_STATE, 2
+	setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
+	clearflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
+	clearflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
+	//
+	setflag FLAG_VISITED_LITTLEROOT_TOWN
+	setflag FLAG_VISITED_OLDALE_TOWN
+	setflag FLAG_VISITED_DEWFORD_TOWN
+	setflag FLAG_VISITED_LAVARIDGE_TOWN
+	setflag FLAG_VISITED_FALLARBOR_TOWN
+	setflag FLAG_VISITED_VERDANTURF_TOWN
+	setflag FLAG_VISITED_PACIFIDLOG_TOWN
+	setflag FLAG_VISITED_PETALBURG_CITY
+	setflag FLAG_VISITED_SLATEPORT_CITY
+	setflag FLAG_VISITED_MAUVILLE_CITY
+	setflag FLAG_VISITED_RUSTBORO_CITY
+	setflag FLAG_VISITED_FORTREE_CITY
+	setflag FLAG_VISITED_LILYCOVE_CITY
+	setflag FLAG_VISITED_MOSSDEEP_CITY
+	setflag FLAG_VISITED_SOOTOPOLIS_CITY
+	setflag FLAG_VISITED_EVER_GRANDE_CITY
+	setflag FLAG_LANDMARK_POKEMON_LEAGUE
+	setflag FLAG_LANDMARK_BATTLE_FRONTIER
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_BADGE02_GET
+	setflag FLAG_BADGE03_GET
+	setflag FLAG_BADGE04_GET
+	setflag FLAG_BADGE05_GET
+	setflag FLAG_BADGE06_GET
+	setflag FLAG_BADGE07_GET
+	setflag FLAG_BADGE08_GET
+	setflag FLAG_RECEIVED_HM_STRENGTH
+	setflag FLAG_RECEIVED_HM_ROCK_SMASH
+	setflag FLAG_RECEIVED_HM_FLASH
+	setflag FLAG_RECEIVED_HM_FLY
+	setflag FLAG_RECEIVED_HM_SURF
+	setflag FLAG_RECEIVED_HM_DIVE
+	setflag FLAG_RECEIVED_HM_CUT
+	setflag FLAG_RECEIVED_HM_WATERFALL
+	givemon SPECIES_RAYQUAZA, 70, ITEM_NONE
+	givemon SPECIES_GROUDON, 45, ITEM_NONE
+	givemon SPECIES_KYOGRE, 45, ITEM_NONE
+	additem ITEM_TM02
+	additem ITEM_TM13
+	additem ITEM_TM21
+	additem ITEM_TM23
+	additem ITEM_TM24
+	additem ITEM_TM28
+	additem ITEM_TM29
+	additem ITEM_TM30
+	additem ITEM_TM31
+	additem ITEM_TM35
+	additem ITEM_TM36
+	additem ITEM_HM01
+	additem ITEM_HM02
+	additem ITEM_HM03
+	additem ITEM_HM04
+	additem ITEM_HM05
+	additem ITEM_HM06
+	additem ITEM_HM07
+	additem ITEM_HM08
+	setflag FLAG_RECEIVED_HM_STRENGTH
+	setflag FLAG_RECEIVED_HM_ROCK_SMASH
+	setflag FLAG_RECEIVED_HM_FLASH
+	setflag FLAG_RECEIVED_HM_FLY
+	setflag FLAG_RECEIVED_HM_SURF
+	setflag FLAG_RECEIVED_HM_DIVE
+	setflag FLAG_RECEIVED_HM_CUT
+	setflag FLAG_RECEIVED_HM_WATERFALL
+	msgbox CheatStart_Text_Activated, MSGBOX_NPC
+	releaseall
+	end
+
+CheatStart_EventScript_Already::
+	msgbox CheatStart_Text_Already, MSGBOX_NPC
+	end
+
+CheatStart_Text_Activated:
+	.string "CheatStart Activated!$"
+
+CheatStart_Text_Already:
+	.string "CheatStart Already Active!$"
+
+CheckWildEncounter::
+	checkflag FLAG_NOWILDBATTLE
+	vgoto_if 1, CheckWildEncounter_ActivatedFlag
+	setflag FLAG_NOWILDBATTLE
+	msgbox CheckWild_Text_FlagDeactivated, MSGBOX_NPC
+	end
+
+CheckWildEncounter_ActivatedFlag::
+	clearflag FLAG_NOWILDBATTLE
+	msgbox CheckWild_Text_FlagActivated, MSGBOX_NPC
+	end
+
+CheckWild_Text_FlagActivated: 
+	.string "Wild encounters activated.$"
+	
+CheckWild_Text_FlagDeactivated: 
+	.string "Wild encounters deactivated.$"
+
+CheckTrainerSee::
+	checkflag FLAG_SYS_TOGGLE_TRAINER_BATTLES
+	vgoto_if 1, CheckTrainerSee_ActivatedFlag
+	setflag FLAG_SYS_TOGGLE_TRAINER_BATTLES
+	msgbox CheckTrainerSee_Text_FlagActivated, MSGBOX_NPC
+	end
+
+CheckTrainerSee_ActivatedFlag::
+	clearflag FLAG_SYS_TOGGLE_TRAINER_BATTLES
+	msgbox CheckTrainerSee_Text_FlagDeactivated, MSGBOX_NPC
+	end
+
+CheckTrainerSee_Text_FlagActivated: 
+	.string "Trainer Sees You activated.$"
+	
+CheckTrainerSee_Text_FlagDeactivated: 
+	.string "Trainer Sees You deactivated.$"
+
+
+Bike_EventScript_SwitchBikes::
+	checkitem ITEM_ACRO_BIKE
+	goto_if_eq VAR_RESULT, TRUE, Bike_EventScript_SwitchAcroForMach
+	checkitem ITEM_MACH_BIKE
+	goto_if_eq VAR_RESULT, TRUE, Bike_EventScript_SwitchMachForAcro
+	release
+	end
+
+Bike_EventScript_SwitchAcroForMach::
+	msgbox Bike_Text_SwapAcroForMach, MSGBOX_DEFAULT
+	removeitem ITEM_ACRO_BIKE
+	giveitem ITEM_MACH_BIKE
+	special SwapRegisteredBike
+	release
+	end
+
+Bike_EventScript_SwitchMachForAcro::
+	msgbox Bike_Text_SwapMachForAcro, MSGBOX_DEFAULT
+	removeitem ITEM_MACH_BIKE
+	giveitem ITEM_ACRO_BIKE
+	special SwapRegisteredBike
+	release
+	end
+
+Bike_Text_SwapMachForAcro:
+	.string "Swapped to ACRO BIKE.$"
+
+Bike_Text_SwapAcroForMach:
+	.string "Swapped to MACH BIKE.$"

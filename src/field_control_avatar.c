@@ -667,22 +667,25 @@ void RestartWildEncounterImmunitySteps(void)
 
 static bool8 CheckStandardWildEncounter(u16 metatileBehavior)
 {
-    if (sWildEncounterImmunitySteps < 4)
-    {
-        sWildEncounterImmunitySteps++;
-        sPrevMetatileBehavior = metatileBehavior;
-        return FALSE;
-    }
+	if (FlagGet(FLAG_NOWILDBATTLE) != 0){
+	
+		if (sWildEncounterImmunitySteps < 4)
+		{
+			sWildEncounterImmunitySteps++;
+			sPrevMetatileBehavior = metatileBehavior;
+			return FALSE;
+		}
 
-    if (StandardWildEncounter(metatileBehavior, sPrevMetatileBehavior) == TRUE)
-    {
-        sWildEncounterImmunitySteps = 0;
-        sPrevMetatileBehavior = metatileBehavior;
-        return TRUE;
-    }
+		if (StandardWildEncounter(metatileBehavior, sPrevMetatileBehavior) == TRUE)
+		{
+			sWildEncounterImmunitySteps = 0;
+			sPrevMetatileBehavior = metatileBehavior;
+			return TRUE;
+		}
 
-    sPrevMetatileBehavior = metatileBehavior;
-    return FALSE;
+		sPrevMetatileBehavior = metatileBehavior;
+		return FALSE;
+	}
 }
 
 static bool8 TryArrowWarp(struct MapPosition *position, u16 metatileBehavior, u8 direction)
