@@ -37,7 +37,11 @@ LilycoveCity_DepartmentStore_1F_Text_TicketMatchesPCMon:
 
 LilycoveCity_DepartmentStore_1F_Text_NoNumbersMatched:
 	.string "I'm sorry.\n"
-	.string "None of the numbers matched.$"
+	.string "None of your numbers matched.$"
+
+LilycoveCity_DepartmentStore_1F_Text_ConsolationPrize:
+	.string "…\p"
+	.string "Have this as a consolation prize!$"
 
 LilycoveCity_DepartmentStore_1F_Text_TwoDigitsMatched:
 	.string "Two digits matched, so you win the\n"

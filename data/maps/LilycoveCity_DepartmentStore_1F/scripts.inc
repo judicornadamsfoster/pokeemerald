@@ -92,9 +92,24 @@ LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain::
 
 LilycoveCity_DepartmentStore_1F_EventScript_NoMatch::
 	msgbox LilycoveCity_DepartmentStore_1F_Text_NoNumbersMatched, MSGBOX_DEFAULT
-	goto LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain2
+	goto LilycoveCity_DepartmentStore_1F_EventScript_ConsolationPrize
 	end
 
+LilycoveCity_DepartmentStore_1F_EventScript_ConsolationPrize::
+	msgbox LilycoveCity_DepartmentStore_1F_Text_ConsolationPrize, MSGBOX_DEFAULT
+	checkitemspace ITEM_TIMER_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull
+	giveitem ITEM_TIMER_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull
+	goto LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain2
+	release
+	end
+	
+LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull::
+	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
+	
 LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain2::
 	msgbox LilycoveCity_DepartmentStore_1F_Text_PleaseVisitAgain2, MSGBOX_DEFAULT
 	release
