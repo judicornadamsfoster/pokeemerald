@@ -1109,6 +1109,7 @@ CheatStart::
 	additem ITEM_HM06
 	additem ITEM_HM07
 	additem ITEM_HM08
+	additem ITEM_NUGGET
 	setflag FLAG_RECEIVED_HM_STRENGTH
 	setflag FLAG_RECEIVED_HM_ROCK_SMASH
 	setflag FLAG_RECEIVED_HM_FLASH
@@ -1117,6 +1118,7 @@ CheatStart::
 	setflag FLAG_RECEIVED_HM_DIVE
 	setflag FLAG_RECEIVED_HM_CUT
 	setflag FLAG_RECEIVED_HM_WATERFALL
+	setflag FLAG_HIDE_ROUTE_101_ZIGZAGOON
 	msgbox CheatStart_Text_Activated, MSGBOX_NPC
 	releaseall
 	end
@@ -1126,7 +1128,7 @@ CheatStart_EventScript_Already::
 	end
 
 CheatStart_Text_Activated:
-	.string "CheatStart Activated!$"
+	.string "CheatStart 2.0 Activated!$"
 
 CheatStart_Text_Already:
 	.string "CheatStart Already Active!$"

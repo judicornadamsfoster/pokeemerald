@@ -1,12 +1,11 @@
 LilycoveCity_DepartmentStore_1F_Text_LotteryCornerDrawTicket:
-	.string "This is the POKéMON LOTTERY CORNER.\p"
-	.string "All shoppers at our DEPARTMENT STORE\n"
-	.string "get to draw a POKéMON LOTO TICKET.\p"
-	.string "If the LOTO TICKET's number matches\n"
-	.string "the ID number of any of your POKéMON,\l"
-	.string "you will receive a fabulous gift.\p"
-	.string "Would you like to draw a POKéMON\n"
-	.string "LOTO TICKET?$"
+	.string "Welcome to the LOTTERY CORNER.\p"
+	.string "It costs ¥500 a TICKET.\n"
+	.string "Would you like to enter?$"
+
+LilycoveCity_DepartmentStore_1F_Text_NotEnoughMoney:
+	.string "Oh? I'm sorry, but you don't seem to\n"
+	.string "have enough money.$"
 
 LilycoveCity_DepartmentStore_1F_Text_ComeBackTomorrow:
 	.string "Please come back tomorrow.$"

@@ -5,17 +5,35 @@ LilycoveCity_DepartmentStore_1F_EventScript_Greeter::
 	msgbox LilycoveCity_DepartmentStore_1F_Text_WelcomeToDeptStore, MSGBOX_NPC
 	end
 
+//edited lottery process to cost 500
 LilycoveCity_DepartmentStore_1F_EventScript_LotteryClerk::
 	lock
 	faceplayer
 	dotimebasedevents
+	showmoneybox 0, 0
 	goto_if_ne VAR_POKELOT_PRIZE_ITEM, ITEM_NONE, LilycoveCity_DepartmentStore_1F_EventScript_GivePrizeFromEarlier
-	goto_if_set FLAG_DAILY_PICKED_LOTO_TICKET, LilycoveCity_DepartmentStore_1F_EventScript_ComeBackTomorrow
+	clearflag FLAG_DAILY_PICKED_LOTO_TICKET
 	msgbox LilycoveCity_DepartmentStore_1F_Text_LotteryCornerDrawTicket, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, LilycoveCity_DepartmentStore_1F_EventScript_CheckMoneyForFee
 	goto_if_eq VAR_RESULT, NO, LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain
+	closemessage
+	hidemoneybox
+	releaseall
+	end
+
+	
+LilycoveCity_DepartmentStore_1F_EventScript_CheckMoneyForFee::
+	checkmoney 500
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_NotEnoughMoney
+	playse SE_SHOP
+	removemoney 500
+	updatemoneybox
+	hidemoneybox
 	setflag FLAG_DAILY_PICKED_LOTO_TICKET
 	message LilycoveCity_DepartmentStore_1F_Text_PleasePickTicket
 	waitmessage
+	special ResetLotteryCorner
+	special SetRandomLotteryNumber
 	special RetrieveLotteryNumber
 	copyvar VAR_0x8008, VAR_RESULT
 	special BufferLottoTicketNumber
@@ -43,7 +61,16 @@ LilycoveCity_DepartmentStore_1F_EventScript_LotteryClerk::
 	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_RecordPrizeNoRoom
 	special TryPutLotteryWinnerReportOnAir
 	goto LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain2
+	clearflag FLAG_DAILY_PICKED_LOTO_TICKET
 	end
+
+LilycoveCity_DepartmentStore_1F_EventScript_NotEnoughMoney::
+	msgbox LilycoveCity_DepartmentStore_1F_Text_NotEnoughMoney, MSGBOX_DEFAULT
+	closemessage
+	hidemoneybox
+	releaseall
+	end
+
 
 LilycoveCity_DepartmentStore_1F_EventScript_TicketMatchPartyMon::
 	msgbox LilycoveCity_DepartmentStore_1F_Text_TicketMatchesPartyMon, MSGBOX_DEFAULT
