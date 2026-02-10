@@ -95,7 +95,8 @@ LilycoveCity_DepartmentStore_1F_EventScript_NoMatch::
 	goto LilycoveCity_DepartmentStore_1F_EventScript_ConsolationPrize
 	end
 
-LilycoveCity_DepartmentStore_1F_EventScript_ConsolationPrize::
+//If only 1 item to be given
+/* LilycoveCity_DepartmentStore_1F_EventScript_ConsolationPrize::
 	msgbox LilycoveCity_DepartmentStore_1F_Text_ConsolationPrize, MSGBOX_DEFAULT
 	checkitemspace ITEM_TIMER_BALL, 1
 	compare VAR_RESULT, 0
@@ -106,7 +107,88 @@ LilycoveCity_DepartmentStore_1F_EventScript_ConsolationPrize::
 	goto LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain2
 	release
 	end
-	
+*/
+
+// If random list of items to be chosen
+// item must be stated twice in each script, for both checkitemspace and giveitem
+LilycoveCity_DepartmentStore_1F_EventScript_ConsolationPrize::
+	msgbox LilycoveCity_DepartmentStore_1F_Text_ConsolationPrize, MSGBOX_DEFAULT
+	random 6
+	switch VAR_RESULT
+	case 0, Script_LotoRandomItem1
+	case 1, Script_LotoRandomItem2
+	case 2, Script_LotoRandomItem3
+	case 3, Script_LotoRandomItem4
+	case 4, Script_LotoRandomItem5
+	case 5, Script_LotoRandomItem6
+	end
+
+Script_LotoRandomItem1::
+	checkitemspace ITEM_TIMER_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull
+	giveitem ITEM_TIMER_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull	
+	goto LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain2
+	release
+	end
+
+Script_LotoRandomItem2::
+	checkitemspace ITEM_DIVE_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull
+	giveitem ITEM_DIVE_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull	
+	goto LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain2
+	release
+	end
+
+Script_LotoRandomItem3::
+	checkitemspace ITEM_NEST_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull
+	giveitem ITEM_NEST_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull	
+	goto LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain2
+	release
+	end
+
+Script_LotoRandomItem4::
+	checkitemspace ITEM_REPEAT_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull
+	giveitem ITEM_REPEAT_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull	
+	goto LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain2
+	release
+	end
+
+Script_LotoRandomItem5::
+	checkitemspace ITEM_LUXURY_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull
+	giveitem ITEM_LUXURY_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull	
+	goto LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain2
+	release
+	end
+
+Script_LotoRandomItem6::
+	checkitemspace ITEM_NET_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull
+	giveitem ITEM_NET_BALL, 1
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull	
+	goto LilycoveCity_DepartmentStore_1F_EventScript_PleaseVisitAgain2
+	release
+	end
+
 LilycoveCity_DepartmentStore_1F_EventScript_BagIsFull::
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	
