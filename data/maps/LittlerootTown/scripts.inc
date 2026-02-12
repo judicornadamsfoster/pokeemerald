@@ -1131,44 +1131,7 @@ CheatStart_Text_Activated:
 	.string "CheatStart 2.0 Activated!$"
 
 CheatStart_Text_Already:
-	.string "CheatStart Already Active!$"
-
-CheckWildEncounter::
-	checkflag FLAG_NOWILDBATTLE
-	vgoto_if 1, CheckWildEncounter_ActivatedFlag
-	clearflag FLAG_NOWILDBATTLE
-	msgbox CheckWild_Text_FlagDeactivated, MSGBOX_NPC
-	end
-
-CheckWildEncounter_ActivatedFlag::
-	setflag FLAG_NOWILDBATTLE
-	msgbox CheckWild_Text_FlagActivated, MSGBOX_NPC
-	end
-
-CheckWild_Text_FlagActivated: 
-	.string "Wild encounters activated.$"
-	
-CheckWild_Text_FlagDeactivated: 
-	.string "Wild encounters deactivated.$"
-
-CheckTrainerSee::
-	checkflag FLAG_SYS_TOGGLE_TRAINER_BATTLES
-	vgoto_if 1, CheckTrainerSee_ActivatedFlag
-	setflag FLAG_SYS_TOGGLE_TRAINER_BATTLES
-	msgbox CheckTrainerSee_Text_FlagActivated, MSGBOX_NPC
-	end
-
-CheckTrainerSee_ActivatedFlag::
-	clearflag FLAG_SYS_TOGGLE_TRAINER_BATTLES
-	msgbox CheckTrainerSee_Text_FlagDeactivated, MSGBOX_NPC
-	end
-
-CheckTrainerSee_Text_FlagActivated: 
-	.string "No Trainer Battles activated.$"
-	
-CheckTrainerSee_Text_FlagDeactivated: 
-	.string "No Trainer Battles deactivated.$"
-
+	.string "CheatStart 2.0 Already Active!$"
 
 Bike_EventScript_SwitchBikes::
 	checkitem ITEM_ACRO_BIKE
