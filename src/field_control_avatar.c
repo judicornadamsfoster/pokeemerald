@@ -708,7 +708,6 @@ static bool8 CheckStandardWildEncounter(u16 metatileBehavior)
 
 		sPrevMetatileBehavior = metatileBehavior;
 		return FALSE;
-	}
 }
 
 static bool8 TryArrowWarp(struct MapPosition *position, u16 metatileBehavior, u8 direction)
