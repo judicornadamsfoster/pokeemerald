@@ -945,5 +945,5 @@ u8 GetItemSecondaryId(u16 itemId)
 
 void ItemId_GetHoldEffectParam_Script()
 {
-    VarSet(VAR_RESULT, ItemId_GetHoldEffectParam(VarGet(VAR_0x8004)));
+    VarSet(VAR_RESULT, GetItemHoldEffectParam(VarGet(VAR_0x8004)));
 }
